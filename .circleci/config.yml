@@ -1,13 +1,10 @@
 version: 2.1
-
-orbs:
-  python: circleci/python:3.7.3-stretch
-
 jobs:
-  build-and-test:
-    executor: python/default
-    steps:
+  build-and-lint:
+    docker:
+      - image: python:3.7.3-stretch
 
+    steps:
       - checkout
 
       - restore_cache:
@@ -41,4 +38,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build-and-lint
